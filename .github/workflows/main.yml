@@ -32,4 +32,4 @@ jobs:
         git config --global user.name "ChelesteWang"
         git add .
         git commit -m "GitHub Actions 自动更新"
-        git push
+        git push origin main
