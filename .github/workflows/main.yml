@@ -1,0 +1,35 @@
+name: 自动更新
+
+on:
+  schedule:
+  - cron: "0 12 * * *"
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    
+    - name: Renew
+      run: python3 fans-count.py
+
+    - name: Commit and push
+      run: |
+        git diff
+        git config --global user.email "1581446178@qq.com"
+        git config --global user.name "ChelesteWang"
+        git add .
+        git commit -am "GitHub Actions 自动更新"
+        git push
