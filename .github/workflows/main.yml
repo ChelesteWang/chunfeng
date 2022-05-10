@@ -31,5 +31,5 @@ jobs:
         git config --global user.email "1581446178@qq.com"
         git config --global user.name "ChelesteWang"
         git add .
-        git commit -am "GitHub Actions 自动更新"
+        git commit -m "GitHub Actions 自动更新"
         git push
