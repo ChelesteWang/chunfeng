@@ -35,5 +35,8 @@ jobs:
       run: git add .
     - name: commit changed files
       run: git commit -m "update by github actions"
-
-
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITFLOW }}
+        branch: ${{ github.ref }}
