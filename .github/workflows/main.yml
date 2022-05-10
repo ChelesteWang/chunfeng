@@ -26,10 +26,15 @@ jobs:
       run: python3 fans-count.py
 
     - name: Commit and push
-      run: |
-        git diff
-        git config --global user.email "1581446178@qq.com"
-        git config --global user.name "ChelesteWang"
-        git add .
-        git commit -m "GitHub Actions 自动更新"
-        git push origin main
+      run: git config --global user.email "1581446178@qq.com"&&git config --global user.name "ChelesteWang"
+    # 使用上面的 sh 脚本提交和推送
+    # 或者使用 git 命令
+    - name: check for changes
+      run: git status
+    - name: stage changed files
+      run: git add .
+    - name: commit changed files
+      run: git commit -m "update by github actions"
+    - name: push code to main
+      run: git push origin main
+
